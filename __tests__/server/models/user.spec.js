@@ -2,12 +2,10 @@
  * @jest-environment node
  */ 
 import User from '@models/user';
-import mongoose from 'mongoose';
 import Bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import config from '@config';
-
-const mongoUri = 'mongodb://localhost:27017/lb-testing-javascript-auth-app';
+import { connect, disconnect } from '@tests/utils/mongoose'
 
 describe('User Model', () => {
   const user = {
@@ -15,11 +13,11 @@ describe('User Model', () => {
     email: 'john.doe@test.com',  
     password: 'plaintextpassword'
   }
-
+  
   let createdUser;
-
+  
   beforeAll(async () => {
-    await mongoose.connect(mongoUri, { useNewUrlParser: true})
+    await connect()
 
     createdUser = await User.create(user)
   })
@@ -44,6 +42,6 @@ describe('User Model', () => {
   })
   
   afterAll(async() => {
-    await mongoose.connection.close()
+    await disconnect()
   })
 })
