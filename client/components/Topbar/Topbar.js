@@ -22,12 +22,14 @@ const Topbar = ({ isAuthenticated, user, history, logout }) => {
                 {!isAuthenticated && (
                     <div className="lg:inline-block">
                         <Link
+                            id="login-button"
                             to="/auth/login"
                             className="no-underline text-white mr-6 text-brown hover:text-brown-darkest trans-30"
                         >
                             Sign In
                         </Link>
                         <Link
+                            id="register-button"
                             to="/auth/register"
                             className="no-underline focus:outline-none text-white px-3 py-2 border-2 inline border-brown hover:border-brown-darkest rounded-full text-brown hover:text-brown-darkest trans-30"
                         >
@@ -37,11 +39,12 @@ const Topbar = ({ isAuthenticated, user, history, logout }) => {
                 )}
                 {isAuthenticated && (
                     <div className="flex items-center">
-                        <span className="cursor-pointer hover:text-brown-darker text-brown">
+                        <span id="auth-username" className="cursor-pointer hover:text-brown-darker text-brown">
                             Hey, <strong>{user.name}</strong>
                         </span>
 
                         <span
+                            id="auth-logout"
                             onClick={logoutUser}
                             className="ml-8 cursor-pointer hover:text-brown-darker text-brown"
                         >

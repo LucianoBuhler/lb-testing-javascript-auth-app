@@ -9,7 +9,7 @@ const SendEmailConfirm = ({ resendEmailConfirmation }) => (
             'border-t border-b text-brown bg-gold-lightest font-bold text-center px-4 py-5'
         )}
     >
-        <p className="text-lg">
+        <p className="text-lg" id="confirm-email-message">
             Please confirm your email address. Didn&rsquo;t receive an email ?
             <span
                 onClick={resendEmailConfirmation}
